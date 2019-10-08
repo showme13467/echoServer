@@ -12,7 +12,7 @@ def run(conn,ip,port):
                 data = conn.recv(2024)      # data is named the bytes which the server receives from the user divided in 2024 bytes
                 if data:
                     print("Server received data:", data)    # the received data printed out in the server console
-                     conn.send(data)     # the server sends this data back to the user
+                    conn.send(data)     # the server sends this data back to the user
                 else:
                     print("User " + ip + " disconnected from the server.")      # if there are no more data packages the user sends, the server console uses the IP of the user to specify his identity in the print-order
                     conn.close()    # after printing the connection to the user is shut down
