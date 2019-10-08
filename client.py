@@ -1,5 +1,4 @@
 import socket
-import time
 
 ip = "129.236.228.97"   #IP Address of the server
 port = 23456
@@ -8,19 +7,16 @@ s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)    # creating the socket
 
 s.connect((ip,port))    # connecting the socket to the server
 
-selfip = socket.gethostbyname(socket.gethostname())     # getting the IP address of the client
-print(selfip)
 print("> connected to %s" %ip)
-
 print("> Type 'exit' to leave this room")
 
 proceed = "exit"   # creating an option to exit the chat
 message = ""
+
 while True:
     try:
         while message != proceed:   # if the client enters exit, the while loop stops
                 data = s.recv(60)   # data the socket receives
-
 
                 if data:
                     print("> Server recieved: %s" %data)

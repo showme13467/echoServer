@@ -1,9 +1,5 @@
 import socket
 import threading
-import concurrent.futures
-
-
-# Multithreaded Python server : TCP Server Socket Thread Pool
 
 # main method, running all the time until server is shut down
 def run(conn,ip,port):
