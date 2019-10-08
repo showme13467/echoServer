@@ -21,7 +21,7 @@ while True:
                 if data:
                     print("> Server recieved: %s" %data.decode("utf-8"))
                     message = input("enter your text: ") # is printed to the client
-                    message = message + "\n" + "that is your new line" 
+                    message = message + "\n" + "that is your new line *"
                     message1 = str(message).encode("utf-8")     # message is decoded in UTF-8
                     s.sendall(message1)     # message is send to server
 
