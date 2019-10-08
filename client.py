@@ -19,8 +19,9 @@ while True:
                 data = s.recv(60)   # data the socket receives
 
                 if data:
-                    print("> Server recieved: %s" %data)
-                    message = input("enter your text: ")    # is printed to the client
+                    print("> Server recieved: %s" %data.decode("utf-8"))
+                    message = input("enter your text: ") # is printed to the client
+                    message = message + "\n" + "hier ist die neue Zeile"
                     message1 = str(message).encode("utf-8")     # message is decoded in UTF-8
                     s.sendall(message1)     # message is send to server
 

@@ -7,7 +7,16 @@ def run(conn,ip,port):
            while 1:     # while True, the server is running
                 data = conn.recv(2024)      # message received and saved as data
                 if data:
-                    print("Server received data:", data)    # received data printed out in the server console
+                    newMessage = str(data).split('\\n')
+                    newMessage[0] = newMessage[0].replace("b'", "", 1)
+                    newMessage[0] += " "
+                    print(newMessage)
+                    finalMessage = ""
+                    for i in newMessage:
+                         finalMessage += i
+                    finalMessage[:-1]
+                    print(finalMessage)
+                    print("Server received data from " + ip + " : " , data)     # received data printed out in the server console
                     conn.send(data)     # the server sends this data back to the user
 
                 else:
