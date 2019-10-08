@@ -1,11 +1,11 @@
 import socket
 
-ip = "129.236.228.97"   #IP Address of the server
+ip = "129.236.228.97"   #IP address of the server
 port = 23456
 
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)    # creating the socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    # creating the socket
 
-s.connect((ip,port))    # connecting the socket to the server
+s.connect((ip, port))    # connecting the socket to the server
 
 print("> connected to %s" %ip)
 print("> Type 'exit' to leave this room")
@@ -24,7 +24,6 @@ while True:
                     message1 = str(message).encode("utf-8")     # message is decoded in UTF-8
                     s.sendall(message1)     # message is send to server
 
-
     except ConnectionError:     # handling connectionerror
         print("You have lost the Connection. Try again.")
         s.close()   # close socket
@@ -33,4 +32,4 @@ while True:
     except (KeyboardInterrupt, SystemExit):     # handling an Keyboardinterrupt and Systemexit
         raise
 
-s.close() # close socket
+s.close()   # close socket
