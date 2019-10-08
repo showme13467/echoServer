@@ -6,7 +6,7 @@ def run(conn,ip):
     try:
            while 1:     # while True, the server is running
                 data = conn.recv(2024)# message received and saved as data
-                data = bytes(data).decode("utf-8")
+
                 if data:
                     data = bytes(data).decode("utf-8")
                     newMessage = str(data).split('\n')
