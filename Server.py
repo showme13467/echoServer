@@ -2,25 +2,23 @@ import socket
 import threading
 
 # main method, running all the time until server is shut down
-def run(conn,ip,port):
+def run(conn,ip):
     try:
            while 1:     # while True, the server is running
-                data = conn.recv(2024)      # message received and saved as data
+                data = conn.recv(2024)# message received and saved as data
+                data = bytes(data).decode("utf-8")
                 if data:
-                    newMessage = str(data).split('\\n')     # message is split at new line symbol
-                    newMessage[0] = newMessage[0].replace("b'", "", 1) # removing useless parts
-                    newMessage[0] += " "
-                    print(newMessage)
+                    newMessage = str(data).split('\n')     # message is split at new line symbol
+                    newMessage[0] += " (new line) "
                     finalMessage = ""
 
                     # puts chars from newMessage in finalMessage
                     for i in newMessage:
                          finalMessage += i
-                    finalMessage[:-1]   # removes last useless char
-                    print(finalMessage)
                     
                     # received data printed out in the server console
-                    print("Server received data from " + ip + " : " , data)
+                    print("Server received data from " + ip + " : " , finalMessage)
+                    data = data.encode("utf-8")
                     conn.send(data)     # the server sends this data back to the user
 
                 else:
@@ -55,7 +53,7 @@ while 1:
         print("Server connected to " + ip + ":" + str(port))
 
         # A new thread is set every time a user connects to the server
-        newthread = threading.Thread(target = run, args = (conn,ip,port))
+        newthread = threading.Thread(target = run, args = (conn,ip))
         newthread.start()  # The new thread is started
         print("New thread started")
         threads.append(newthread)     # the thread is added to the list of threads
