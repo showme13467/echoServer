@@ -8,17 +8,18 @@ def run(conn,ip):
                 data = conn.recv(2024)# message received and saved as data
                 data = bytes(data).decode("utf-8")
                 if data:
-                    newMessage = str(data).split('\n')     # message is split at new line symbol
+                    data = bytes(data).decode("utf-8")
+                    newMessage = str(data).split('\n')
                     newMessage[0] += " (new line) "
                     finalMessage = ""
 
                     # puts chars from newMessage in finalMessage
                     for i in newMessage:
                          finalMessage += i
-                    
+                        
                     # received data printed out in the server console
                     print("Server received data from " + ip + " : " , finalMessage)
-                    data = data.encode("utf-8")
+                    data = str(data).encode("utf-8")
                     conn.send(data)     # the server sends this data back to the user
 
                 else:
