@@ -1,7 +1,7 @@
 import socket
 import time
 
-ip = "129.236.229.157"#"129.236.229.240"
+ip = "129.236.228.97"#"129.236.229.240"
 port = 23456
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)

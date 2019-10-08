@@ -12,7 +12,7 @@ def run(conn,ip,port):
                 data = conn.recv(2024)      # data is named the bytes which the server receives from the user divided in 2024 bytes
                 if data:
                     print("Server received data:", data)    # the received data printed out in the server console
-                     conn.send(data)     # the server sends this data back to the user
+                    conn.send(data)     # the server sends this data back to the user
                 else:
                     print("User " + ip + " disconnected from the server.")      # if there are no more data packages the user sends, the server console uses the IP of the user to specify his identity in the print-order
                     conn.close()    # after printing the connection to the user is shut down
@@ -24,7 +24,7 @@ def run(conn,ip,port):
 
 
 # Multithreaded Python server : TCP Server Socket Program Stub
-TCP_IP = "192.168.1.107"   #"209.2.215.140"     # The IP-Address for the Server, should be from the computer creating this server
+TCP_IP = "129.236.228.97"   #"209.2.215.140"     # The IP-Address for the Server, should be from the computer creating this server
 TCP_PORT = 23456           # The port for the server, should be >1024 caused of already reserved ports
 BUFFER_SIZE = 20        # The buffer size depends on underlying device´s block size to buffer binary files in fixed size chunks
 tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # The server is assigned a pair (IP,Port) in the AF_INET part and a type of socket in the SOCK_STREAM part as part of the creation of the server
