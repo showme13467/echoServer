@@ -1,40 +1,35 @@
 import socket
-import time
 
-ip = "129.236.229.157"#"129.236.229.240"
+ip = "129.236.228.97"   #IP address of the server
 port = 23456
 
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    # creating the socket
 
-s.connect((ip,port))
-#s.get.... nicht socket
-selfip = socket.gethostbyname(socket.gethostname())
-print(selfip)
+s.connect((ip, port))    # connecting the socket to the server
+
 print("> connected to %s" %ip)
-
 print("> Type 'exit' to leave this room")
 
-proceed = "exit"
+proceed = "exit"   # creating an option to exit the chat
 message = ""
+
 while True:
     try:
-        while message != proceed:
-                data = s.recv(60)
-
+        while message != proceed:   # if the client enters exit, the while loop stops
+                data = s.recv(60)   # data the socket receives
 
                 if data:
                     print("> Server recieved: %s" %data)
-                    message = input("enter your text: ")
-                    message1 = str(message).encode("utf-8")
-                    s.sendall(message1)
+                    message = input("enter your text: ")    # is printed to the client
+                    message1 = str(message).encode("utf-8")     # message is decoded in UTF-8
+                    s.sendall(message1)     # message is send to server
 
-
-    except ConnectionError:
+    except ConnectionError:     # handling connectionerror
         print("You have lost the Connection. Try again.")
-        s.close()
+        s.close()   # close socket
         break
 
-    except (KeyboardInterrupt, SystemExit):
+    except (KeyboardInterrupt, SystemExit):     # handling an Keyboardinterrupt and Systemexit
         raise
 
-s.close()
+s.close()   # close socket
