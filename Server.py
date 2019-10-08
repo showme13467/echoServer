@@ -31,9 +31,8 @@ tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   # The server is 
 tcpServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)     # Server is set with general socket modules
 tcpServer.bind((TCP_IP, TCP_PORT))      # the server is bound to the given IP and Port
 threads = []    # The threads saved in an empty list
-connections = []    # The connections saved in an empty list
 
-tcpServer.listen(4)     # Server is set listening to the 4th part of the receiving connection, the data
+tcpServer.listen(4)     # Server is set listening
 
 #with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
  #   executor.map(openConn , range(3))
